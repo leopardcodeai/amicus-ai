@@ -1,0 +1,29 @@
+[SYNTHETISCHE TESTDATEN – KEINE ECHTEN PERSONEN ODER UNTERNEHMEN]
+MANDANTENAKTE · Aktenzeichen 2024-102 · Rechtsgebiet: Pflanzenschutzrecht (Parallelhandel)
+
+Mandantin (Antragstellerin):
+  Firma:     ParaTrade Agrar GmbH
+  Anschrift: Speditionstraße 5, 47059 Duisburg
+  Ansprechpartner: Thomas Reuter (Geschäftsführer)
+  E-Mail:    t.reuter@paratrade-agrar.example · Tel. 0203 4455667
+
+Behörde (Gegnerin):
+  Bundesamt für Verbraucherschutz und Lebensmittelsicherheit (BVL), Braunschweig
+
+Sachverhalt:
+  Antrag auf Parallelhandelsgenehmigung nach Art. 52 VO (EG) Nr. 1107/2009 für
+  das Mittel "Fungo-Top" aus Frankreich (Referenzmittel in DE: "Fungo-DE").
+  BVL-Bescheid vom 15.05.2026 lehnt ab: die Identität mit dem Referenzmittel
+  sei nicht hinreichend nachgewiesen (angeblich abweichende Beistoffe /
+  Formulierungsherkunft).
+
+Begehren: Erteilung der Parallelhandelsgenehmigung; Nachweis der Identität
+  i.S.v. Art. 52 Abs. 3 (gleicher Ursprung, gleiche Wirkstoffe, gleiche/
+  gleichwertige Formulierung).
+Streitwert / Mandatswert: 60.000,00 EUR
+Fristen:
+  - Widerspruchsfrist: 18.06.2026  (KRITISCH)
+  - Wiedervorlage: 12.06.2026
+Aktennotiz 04.06.2026: Herstellererklärung zum gemeinsamen Ursprung
+  ("common origin") sowie Chargenanalyse beschafft; bestätigen Identität.
+Nächste Schritte: Widerspruch einlegen, Identitätsnachweis vorlegen.

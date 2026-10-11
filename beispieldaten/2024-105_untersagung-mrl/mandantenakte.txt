@@ -1,0 +1,31 @@
+[SYNTHETISCHE TESTDATEN – KEINE ECHTEN PERSONEN ODER UNTERNEHMEN]
+MANDANTENAKTE · Aktenzeichen 2024-105 · Rechtsgebiet: Pflanzenschutzrecht (Marktüberwachung / Untersagung)
+
+Mandantin:
+  Firma:     FarmDirect Handels GmbH
+  Anschrift: Am Großmarkt 3, 50968 Köln
+  Ansprechpartner: Andreas Vogt (Geschäftsführer)
+  E-Mail:    a.vogt@farmdirect.example · Tel. 0221 7766554
+
+Behörde (Gegnerin):
+  Pflanzenschutzdienst des Landes Nordrhein-Westfalen
+  beteiligt: BVL (Bundesamt), Lebensmittelüberwachung
+
+Sachverhalt:
+  Untersagungsverfügung vom 22.05.2026: Das Inverkehrbringen einer Charge
+  des Mittels "Insektostop" wurde untersagt; zugleich Rückruf angeordnet.
+  Vorwurf: Vertrieb eines in Deutschland nicht zugelassenen Pflanzenschutz-
+  mittels (Etikett/Sprachfassung) sowie Verdacht der Überschreitung von
+  Rückstandshöchstgehalten (MRL) bei behandeltem Erntegut. Sofortvollzug
+  angeordnet.
+
+Begehren: Aussetzung der sofortigen Vollziehung; Aufhebung der Untersagung;
+  Nachweis, dass es sich um zugelassene Ware (zonale Anerkennung) handelt und
+  die MRL nach VO (EG) Nr. 396/2005 eingehalten sind.
+Streitwert / Mandatswert: 90.000,00 EUR
+Fristen:
+  - Antrag auf Aussetzung sofortige Vollziehung: 12.06.2026  (SEHR KRITISCH)
+  - Widerspruchsfrist: 22.06.2026
+Aktennotiz 06.06.2026: Zulassungsnachweis und Analysezertifikat (Rückstände
+  < MRL) liegen vor; Rückrufschaden steigt täglich.
+Nächste Schritte: Eilantrag vorbereiten; Widerspruch einlegen.

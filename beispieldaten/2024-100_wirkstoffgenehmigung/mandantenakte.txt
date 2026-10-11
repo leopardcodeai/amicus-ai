@@ -1,0 +1,30 @@
+[SYNTHETISCHE TESTDATEN – KEINE ECHTEN PERSONEN ODER UNTERNEHMEN]
+MANDANTENAKTE · Aktenzeichen 2024-100 · Rechtsgebiet: Pflanzenschutzrecht (Wirkstoffgenehmigung)
+
+Mandantin (Antragstellerin):
+  Firma:     AgriChem Solutions GmbH
+  Anschrift: Industriepark Höchst, 65926 Frankfurt am Main
+  Ansprechpartner: Dr. Markus Brandt (Leiter Regulatory Affairs)
+  E-Mail:    m.brandt@agrichem-solutions.example · Tel. 069 1234567
+
+Behörden / Verfahrensbeteiligte:
+  - Europäische Kommission (GD SANTE) – Genehmigungsverfahren auf Unionsebene
+  - EFSA (Europäische Behörde für Lebensmittelsicherheit) – Risikobewertung
+  - berichterstattender Mitgliedstaat (RMS): Deutschland (BVL/UBA/BfR)
+
+Sachverhalt:
+  Erneuerung der Genehmigung des Wirkstoffs "Flufenacet" nach Art. 14 ff.
+  VO (EG) Nr. 1107/2009. Die EFSA-Schlussfolgerung vom 03/2026 stuft zwei
+  Grundwasser-Metaboliten als "relevant" ein (> 0,1 µg/l Besorgnisschwelle).
+  Drohende Nicht-Erneuerung bzw. erhebliche Anwendungsbeschränkungen.
+
+Begehren: Erneuerung der Wirkstoffgenehmigung erreichen; hilfsweise
+  risikomindernde Auflagen statt Versagung; fristgerechte Stellungnahme zur
+  EFSA-Schlussfolgerung im Kommentierungsverfahren.
+Streitwert / Mandatswert: 250.000,00 EUR (geschätzter wirtschaftlicher Wert)
+Fristen:
+  - Kommentierung EFSA-Schlussfolgerung: 31.07.2026
+  - Wiedervorlage Ablauf Genehmigung (Verlängerung Annex): 15.10.2026
+Aktennotiz 02.06.2026: Eigene Grundwasser-Monitoringdaten der Mandantin
+  liegen vor und stützen Geringfügigkeit der Metaboliten.
+Nächste Schritte: Gutachten Hydrogeologie beauftragen; Schriftsatz an GD SANTE.

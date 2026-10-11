@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Amicus AI</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- FontAwesome for Premium Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Theme sofort setzen (kein Flash) -->
+    <script>document.documentElement.setAttribute("data-theme", localStorage.getItem("anwalt_theme") || "system");</script>
+    <!-- Style CSS -->
+    <!-- ?v= bei Asset-Änderungen mit hochzählen: verhindert veraltete Browser-Caches nach Deploys -->
+    <link rel="stylesheet" href="style.css?v=7">
+    <!-- MarkedJS for beautiful Markdown rendering -->
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <!-- DOMPurify gegen XSS beim Rendern von Modell-/Dokumentinhalten -->
+    <script src="https://cdn.jsdelivr.net/npm/dompurify@3.1.6/dist/purify.min.js"></script>
+</head>
+<body>
+    <div class="app-container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <div class="logo">
+                    <div class="logo-placeholder" title="Logo-Platzhalter – Kanzlei-Logo noch nicht freigegeben">
+                        <i class="fa-solid fa-scale-balanced"></i>
+                        <span>LOGO</span>
+                    </div>
+                    <div>
+                        <h1>Amicus AI <span class="version-badge" id="app-version" title="App-Version – zählt bei jedem Deploy automatisch hoch"></span></h1>
+                        <span class="version">Logo-Platzhalter · noch nicht freigegeben</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Workspace-Navigation (angelehnt an Corporate-LLM; Dummies) -->
+            <div class="sidebar-section nav-section">
+                <button class="btn btn-primary btn-block" id="btn-clear-chat-2">
+                    <i class="fa-solid fa-plus"></i> Neuer Chat
+                </button>
+                <nav class="nav-list">
+                    <a class="nav-item" id="nav-inbox"><i class="fa-solid fa-inbox"></i> Inbox <span class="nav-sub">Mandant</span></a>
+                    <a class="nav-item" id="nav-bibliothek"><i class="fa-solid fa-book"></i> Bibliothek <span class="nav-sub">Vorlagen</span></a>
+                    <a class="nav-item" id="nav-wissen"><i class="fa-solid fa-brain"></i> Wissen <span class="nav-sub">Wissensbasis</span></a>
+                </nav>
+            </div>
+
+            <!-- Inbox: aktiver Mandant (Auswahl per Dropdown) -->
+            <div class="sidebar-section" id="inbox-panel">
+                <h2><i class="fa-solid fa-inbox"></i> Inbox · Aktiver Mandant</h2>
+                <select id="inbox-select" class="sidebar-input">
+                    <option value="">— Mandant wählen —</option>
+                </select>
+                <input type="text" id="matter-input" class="sidebar-input"
+                       placeholder="oder neue Akten-ID anlegen (z. B. 2024-042)" value="default">
+                <p class="field-hint">Alle Fragen, Uploads & Schriftstücke beziehen sich automatisch auf diesen Mandanten.</p>
+            </div>
+
+            <!-- Wissen: Dokumente laden -->
+            <div class="sidebar-section">
+                <h2><i class="fa-solid fa-brain"></i> Wissen · Dokumente laden</h2>
+                <label class="field-label">Kategorie</label>
+                <select id="upload-scope" class="sidebar-input">
+                    <option value="mandat">Mandantsakte (aktuelle Akte)</option>
+                    <option value="allgemein">Allgemein (Gesetze, Muster)</option>
+                    <option value="rechtsprechung">Rechtsprechung (Urteile)</option>
+                </select>
+                <input type="text" id="upload-lawbook" class="sidebar-input"
+                       placeholder="Gesetz/VO (optional, z. B. VO 1107/2009)">
+                <div class="upload-zone" id="upload-zone">
+                    <i class="fa-solid fa-file-arrow-up upload-icon"></i>
+                    <p>Dokumente oder MP3 per Drag & Drop hierhin ziehen</p>
+                    <span>PDF, DOCX, TXT, MD · MP3/WAV (Diktat → wird transkribiert)</span>
+                    <input type="file" id="file-input" multiple accept=".pdf,.docx,.txt,.md,.mp3,.wav,.m4a,.ogg,.webm,.flac,.aac" style="display: none;">
+                </div>
+            </div>
+
+            <!-- Ingested Documents List -->
+            <div class="sidebar-section docs-section">
+                <h2><i class="fa-solid fa-folder-open"></i> Aktive Dokumente</h2>
+                <div class="doc-list-container">
+                    <ul class="doc-list" id="doc-list">
+                        <!-- Documents will be loaded here dynamically -->
+                        <div class="empty-docs-state">
+                            <i class="fa-regular fa-folder"></i>
+                            <p>Keine Dokumente geladen</p>
+                        </div>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- System & Datenschutz (Details im Modal) -->
+            <div class="sidebar-section">
+                <h2><i class="fa-solid fa-shield-halved"></i> System & Datenschutz</h2>
+                <button class="btn btn-secondary btn-block" id="btn-system-overview">
+                    <i class="fa-solid fa-circle-info"></i> System-Übersicht & Datenschutz-Status
+                </button>
+            </div>
+
+            <!-- Footer / Löschfunktion (DSGVO Art. 17) -->
+            <div class="sidebar-footer">
+                <button class="btn btn-secondary btn-block" id="btn-delete-matter">
+                    <i class="fa-solid fa-folder-minus"></i> Aktuelle Akte löschen
+                </button>
+                <p class="field-hint">Aufbewahrungspflicht: <b>6 Jahre</b> ab Ende des Kalenderjahres des Mandatsendes (§ 50 BRAO). Rechnungen/Belege <b>10 Jahre</b> (§ 147 AO). Erst nach Fristablauf hier löschen.</p>
+            </div>
+        </aside>
+
+        <!-- Main Chat Area -->
+        <main class="chat-area">
+            <header class="chat-header">
+                <div class="header-info">
+                    <h2>Amicus AI</h2>
+                    <span class="status-indicator online">System bereit</span>
+                </div>
+                <div class="header-actions">
+                    <button class="btn btn-icon" id="btn-theme" title="Design: Hell / Dunkel / System">
+                        <i class="fa-solid fa-circle-half-stroke"></i>
+                    </button>
+                    <button class="btn btn-icon" id="btn-clear-chat" title="Chatverlauf leeren">
+                        <i class="fa-solid fa-broom"></i>
+                    </button>
+                </div>
+            </header>
+
+            <!-- Message Feed -->
+            <div class="message-feed" id="message-feed">
+                <!-- Welcome Screen -->
+                <div class="welcome-screen" id="welcome-screen">
+                    <i class="fa-solid fa-scale-balanced welcome-icon"></i>
+                    <h1>Willkommen bei Amicus AI</h1>
+                    <p>Dein DSGVO-orientierter Anwaltskanzlei-KI-Assistent. Dokumente und Mandantendaten werden lokal verarbeitet; personenbezogene Daten werden vor dem Cloud-Versand automatisch pseudonymisiert.</p>
+                    <div class="welcome-features">
+                        <div class="feature-card">
+                            <i class="fa-solid fa-house-laptop"></i>
+                            <h3>Lokale Verarbeitung</h3>
+                            <p>Einlesen, Chunking und Vektorisierung erfolgen vollständig lokal auf der Kanzlei-Hardware (On-Prem, GIGABYTE AI TOP ATOM) – auf verschlüsselter Festplatte.</p>
+                        </div>
+                        <div class="feature-card">
+                            <i class="fa-solid fa-user-shield"></i>
+                            <h3>Pseudonymisierung</h3>
+                            <p>Namen, Adressen, IBANs & Co. werden lokal durch Platzhalter ersetzt – die Cloud erhält keinen Personenbezug.</p>
+                        </div>
+                        <div class="feature-card">
+                            <i class="fa-solid fa-folder-tree"></i>
+                            <h3>Mandantentrennung & Löschung</h3>
+                            <p>Jede Akte ist getrennt; einzelne Dokumente oder ganze Akten sind jederzeit löschbar (Art. 17).</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Input Bar -->
+            <div class="chat-input-container">
+                <!-- Citations Preview / Context Panel -->
+                <div class="context-panel" id="context-panel" style="display: none;">
+                    <div class="context-header">
+                        <span><i class="fa-solid fa-link"></i> Verwendeter Kontext aus Dokumenten</span>
+                    </div>
+                    <div class="citations-badges" id="citations-badges">
+                        <!-- Citations will load here -->
+                    </div>
+                </div>
+                
+                <!-- Fixierte Chat-Konfiguration: Modell + Vorlage + Wissensquellen -->
+                <div class="chat-config">
+                    <div class="cfg-item">
+                        <i class="fa-solid fa-brain"></i>
+                        <select id="model-select" title="KI-Modell (auswählbar)"></select>
+                    </div>
+                    <div class="cfg-item">
+                        <i class="fa-solid fa-wand-magic-sparkles"></i>
+                        <select id="prompt-select" title="Prompt-Vorlage">
+                            <option value="">Vorlage: keine</option>
+                        </select>
+                    </div>
+                    <span class="cfg-sep"></span>
+                    <label class="cfg-scope" title="Allgemeine Gesetze/Muster einbeziehen">
+                        <input type="checkbox" id="scope-allgemein" checked> Allgemein
+                    </label>
+                    <label class="cfg-scope" title="Rechtsprechung einbeziehen">
+                        <input type="checkbox" id="scope-rechtsprechung" checked> Rechtsprechung
+                    </label>
+                    <span class="cfg-hint" id="model-hint"></span>
+                </div>
+
+                <!-- Werkzeugleiste -->
+                <div class="input-toolbar">
+                    <label class="toolbar-toggle" title="DSGVO-sichere Web-Recherche: nur pseudonymisierte Anfrage verlässt das Haus">
+                        <input type="checkbox" id="web-research-toggle">
+                        <i class="fa-solid fa-globe"></i> Web-Recherche
+                    </label>
+                    <span class="toolbar-spacer"></span>
+                    <span class="toolbar-translate" title="Übersetzen: Ausgangssprache wird automatisch erkannt">
+                        <i class="fa-solid fa-language"></i>
+                        <select id="translate-target" title="Zielsprache">
+                            <option value="de">Deutsch</option>
+                            <option value="en">Englisch</option>
+                            <option value="fr">Französisch</option>
+                            <option value="nl">Niederländisch</option>
+                        </select>
+                        <button class="toolbar-btn" id="btn-translate" title="Eingabe in die gewählte Zielsprache übersetzen">Übersetzen</button>
+                    </span>
+                    <button class="toolbar-btn" id="btn-attach" title="Datei anhängen: Dokument (→ Wissensbasis) oder MP3 (→ Transkript)">
+                        <i class="fa-solid fa-paperclip"></i>
+                    </button>
+                    <input type="file" id="chat-file-input" multiple
+                           accept=".pdf,.docx,.txt,.md,.mp3,.wav,.m4a,.ogg,.webm,.flac,.aac" style="display:none;">
+                    <button class="toolbar-btn mic" id="btn-mic" title="Diktat aufnehmen (lokal transkribiert)">
+                        <i class="fa-solid fa-microphone"></i>
+                    </button>
+                </div>
+
+                <!-- #-Mention-Vorschläge (exakte Normen) -->
+                <div class="mention-box" id="mention-box" style="display:none;"></div>
+
+                <div class="chat-input-wrapper">
+                    <textarea class="chat-input" id="chat-input" placeholder="Frage stellen · # für exakte Norm · diktieren über das Mikrofon" rows="1"></textarea>
+                    <button class="btn btn-primary btn-send" id="btn-send" disabled>
+                        <i class="fa-solid fa-paper-plane"></i>
+                    </button>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Knowledge-Base-Übersicht Modal -->
+    <div class="modal-overlay" id="kb-modal" style="display:none;">
+        <div class="modal modal-wide">
+            <div class="modal-header">
+                <h2><i class="fa-solid fa-layer-group"></i> Knowledge Base & Speicher</h2>
+                <button class="btn btn-icon" id="btn-close-kb"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            <div class="modal-body" id="kb-modal-body"></div>
+        </div>
+    </div>
+
+    <!-- Dokument-Schnellansicht Popup -->
+    <div class="modal-overlay" id="doc-preview-overlay" style="display:none;">
+        <div class="modal modal-wide">
+            <div class="modal-header">
+                <h2><i class="fa-solid fa-file-lines"></i> <span id="doc-preview-title">Dokument</span></h2>
+                <button class="btn btn-icon" id="doc-preview-close"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            <div class="modal-body"><pre id="doc-preview-body" class="doc-preview-body"></pre></div>
+        </div>
+    </div>
+
+    <!-- System-Übersicht Modal -->
+    <div class="modal-overlay" id="system-modal" style="display:none;">
+        <div class="modal modal-wide">
+            <div class="modal-header">
+                <h2><i class="fa-solid fa-sitemap"></i> System-Übersicht</h2>
+                <button class="btn btn-icon" id="btn-close-system"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            <div class="modal-body" id="system-modal-body">
+                <!-- wird dynamisch befüllt -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Login-Gate mit Passwortschutz -->
+    <!-- Kaltstart-Hinweis: der erste Aufruf nach einer Pause dauert -->
+    <div class="login-overlay" id="boot-overlay" style="display:none;">
+        <div class="login-box">
+            <div class="logo-placeholder" style="margin:0 auto 14px;"><i class="fa-solid fa-scale-balanced"></i><span>LOGO</span></div>
+            <h2>Amicus AI</h2>
+            <p>System startet gerade…<br>Der erste Aufruf nach einer Pause kann 1–2 Minuten dauern.</p>
+            <div class="pipe-status" style="justify-content:center;"><span class="pipe-spinner"></span> Verbinde…</div>
+        </div>
+    </div>
+
+    <div class="login-overlay" id="login-overlay" style="display:none;">
+        <div class="login-box">
+            <div class="logo-placeholder" style="margin:0 auto 14px;"><i class="fa-solid fa-scale-balanced"></i><span>LOGO</span></div>
+            <h2>Amicus AI</h2>
+            <p>Bitte das Zugangspasswort eingeben.</p>
+            <input type="password" id="login-password" placeholder="Passwort" autocomplete="current-password">
+            <button class="btn btn-primary btn-block" id="login-submit">Anmelden</button>
+            <div class="login-error" id="login-error"></div>
+            <div class="login-version" id="login-version"></div>
+        </div>
+    </div>
+
+    <!-- Notification Toast -->
+    <div class="toast" id="toast"></div>
+
+    <!-- Prompt-Verwaltungs-Modal -->
+    <div class="modal-overlay" id="prompt-modal" style="display:none;">
+        <div class="modal">
+            <div class="modal-header">
+                <h2><i class="fa-solid fa-wand-magic-sparkles"></i> Prompt-Vorlagen</h2>
+                <button class="btn btn-icon" id="btn-close-modal"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            <div class="modal-body">
+                <ul class="prompt-admin-list" id="prompt-admin-list"></ul>
+                <hr class="modal-sep">
+                <h3>Vorlage anlegen / bearbeiten</h3>
+                <input type="text" id="pa-id" class="sidebar-input" placeholder="ID (z. B. fristenpruefung)">
+                <input type="text" id="pa-title" class="sidebar-input" placeholder="Titel">
+                <input type="text" id="pa-category" class="sidebar-input" placeholder="Kategorie (z. B. Analyse)">
+                <textarea id="pa-system" class="sidebar-input" rows="2" placeholder="System-Prompt (optional)"></textarea>
+                <textarea id="pa-template" class="sidebar-input" rows="4" placeholder="Template-Text mit {{input}} als Platzhalter"></textarea>
+                <button class="btn btn-primary btn-block" id="btn-save-prompt"><i class="fa-solid fa-floppy-disk"></i> Speichern</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js?v=7"></script>
+</body>
+</html>

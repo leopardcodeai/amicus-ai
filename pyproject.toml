@@ -1,0 +1,48 @@
+[project]
+name = "amicus-ai"
+version = "0.1.0"
+description = "DSGVO-orientiertes RAG fuer Kanzleien: lokal einlesen, vor dem Modellaufruf pseudonymisieren, mit Fundstelle antworten"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "boto3>=1.42.97",
+    "faster-whisper>=1.0.0",
+    "fastapi>=0.128.8",
+    "httpx>=0.27.0",
+    "lancedb>=0.27.1",
+    "openai>=1.40.0",
+    "pypdf>=6.13.3",
+    "python-docx>=1.2.0",
+    "python-multipart>=0.0.20",
+    "rich>=15.0.0",
+    "sentence-transformers>=5.1.2",
+    "spacy>=3.8.11",
+    "uvicorn>=0.39.0",
+]
+
+[dependency-groups]
+dev = [
+    "pytest>=8.0.0",
+    "pytest-cov>=5.0.0",
+    "ruff>=0.8.0",
+    "pip-audit>=2.7.0",
+]
+
+[tool.ruff]
+line-length = 120
+
+[tool.ruff.lint]
+# Korrektheits-Regeln (Pyflakes + Fehler); Zeilenlänge ist Stil -> aus.
+select = ["E", "F"]
+ignore = ["E501"]
+
+[tool.coverage.run]
+omit = ["tests/*", "eval_rag.py", "main.py"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["."]   # Repo-Root importierbar machen (app, rag_agent, ...) – auch in CI
+markers = [
+    "slow: lädt schwere Modelle/App (z.B. Embedder) – mit '-m \"not slow\"' überspringbar",
+]
+filterwarnings = ["ignore::DeprecationWarning"]

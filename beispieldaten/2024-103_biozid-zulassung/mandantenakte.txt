@@ -1,0 +1,30 @@
+[SYNTHETISCHE TESTDATEN – KEINE ECHTEN PERSONEN ODER UNTERNEHMEN]
+MANDANTENAKTE · Aktenzeichen 2024-103 · Rechtsgebiet: Biozidrecht (Produktzulassung)
+
+Mandantin (Antragstellerin):
+  Firma:     BioGuard Hygiene GmbH
+  Anschrift: Chemiestraße 12, 51368 Leverkusen
+  Ansprechpartnerin: Dr. Petra Sauer (Head of Regulatory)
+  E-Mail:    p.sauer@bioguard-hygiene.example · Tel. 0214 3322110
+
+Behörden / Verfahrensbeteiligte:
+  - ECHA (Europäische Chemikalienagentur), Helsinki – Unionszulassung
+  - bewertende zuständige Behörde (eCA): Deutschland (BAuA)
+  - Biozid-Ausschuss (BPC) der ECHA
+
+Sachverhalt:
+  Antrag auf Unionszulassung des Biozidprodukts "SteriClean Pro"
+  (Produktart PT 2 und PT 4, Desinfektionsmittel) nach VO (EU) Nr. 528/2012.
+  Bewertungsbericht der eCA vom 20.05.2026 bemängelt die Wirksamkeitsnachweise
+  (Suspensionstests EN 13697) und fordert zusätzliche Daten; andernfalls
+  drohe Versagung für PT 4 (Lebensmittel-/Futtermittelbereich).
+
+Begehren: Unionszulassung für PT 2 und PT 4 erreichen; Anerkennung der
+  vorgelegten Wirksamkeitsdaten; hilfsweise Zulassung zunächst für PT 2.
+Streitwert / Mandatswert: 180.000,00 EUR
+Fristen:
+  - Stellungnahme zum Bewertungsbericht (eCA): 15.07.2026
+  - Wiedervorlage Datenlücken-Klärung: 30.06.2026
+Aktennotiz 05.06.2026: Ergänzende Oberflächentests (EN 13697, Belastung)
+  beauftragt; Laborbericht bis 10.07.2026 avisiert.
+Nächste Schritte: Stellungnahme an eCA/ECHA; Wirksamkeitsdaten nachreichen.

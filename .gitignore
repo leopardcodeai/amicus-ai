@@ -1,0 +1,39 @@
+# Python-generated files
+__pycache__/
+*.py[oc]
+build/
+dist/
+wheels/
+*.egg-info
+
+# Virtual environments
+.venv
+
+# === DSGVO: Mandantendaten dürfen NIEMALS ins Repo ===
+# Lokale Vektordatenbank (enthält Klartext-Chunks + Embeddings)
+.lancedb_data/
+# Temporäre Upload-Verzeichnisse
+.temp_uploads/
+# Audit-Log (enthält ggf. personenbeziehbare Metadaten)
+audit_log.jsonl
+# Reversible Pseudonymisierungs-Maps (Re-Identifizierungsschlüssel!)
+.pseudonym_maps/
+# Eingelesene Mandantendokumente (echte Akten gehören NICHT ins Repo)
+*.pdf
+*.docx
+# Hinweis: beispieldaten/ enthält ausschließlich SYNTHETISCHE Fixtures und wird
+# bewusst eingecheckt. Echte Mandantendaten niemals dort ablegen.
+
+# Lokale Konfiguration / Secrets
+.env
+app.log
+
+# Lokaler Secrets-Merkzettel
+SECRETS.local.md
+
+# Roh-Ablage (Original-Mandantendateien!)
+.raw_store/
+
+# Verbrauchs-/Kosten-Ledger
+.usage.json
+.usage.json.tmp

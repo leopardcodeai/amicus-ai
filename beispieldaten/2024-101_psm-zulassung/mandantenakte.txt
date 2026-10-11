@@ -1,0 +1,30 @@
+[SYNTHETISCHE TESTDATEN – KEINE ECHTEN PERSONEN ODER UNTERNEHMEN]
+MANDANTENAKTE · Aktenzeichen 2024-101 · Rechtsgebiet: Pflanzenschutzrecht (Produktzulassung)
+
+Mandantin (Antragstellerin):
+  Firma:     GreenField Crop Protection AG
+  Anschrift: Hanauer Landstraße 200, 60314 Frankfurt am Main
+  Ansprechpartnerin: Dr. Carola Lindner (Zulassungsmanagement)
+  E-Mail:    c.lindner@greenfield-cp.example · Tel. 069 9988776
+
+Behörde (Gegnerin):
+  Bundesamt für Verbraucherschutz und Lebensmittelsicherheit (BVL)
+  Messeweg 11/12, 38104 Braunschweig
+  beteiligt: UBA (Umwelt), BfR (Gesundheit), JKI (Wirksamkeit)
+
+Sachverhalt:
+  Zonale Zulassung des Pflanzenschutzmittels "Herbafix SC" (Herbizid) in der
+  Zone Mitte; Deutschland als zonaler Berichterstatter (zRMS) nach Art. 33 ff.
+  VO (EG) Nr. 1107/2009. BVL-Bescheid vom 28.05.2026 versagt die Zulassung
+  bzw. erteilt sie nur mit nicht praktikablen Abstandsauflagen (20 m zu
+  Oberflächengewässern) wegen Bedenken zum Schutz von Wasserorganismen.
+
+Begehren: Widerspruch gegen die Auflagen; Zulassung mit verhältnismäßigen,
+  praxistauglichen Risikominderungsmaßnahmen (Driftminderung 90 %, 5 m Abstand).
+Streitwert / Mandatswert: 120.000,00 EUR
+Fristen:
+  - Widerspruchsfrist gegen BVL-Bescheid: 30.06.2026  (KRITISCH)
+  - Wiedervorlage Begründung: 20.06.2026
+Aktennotiz 03.06.2026: Driftminderungs-Versuchsbericht (90 %-Düsen) liegt vor;
+  vergleichbare Zulassung in NL (zonale Anerkennung) mit 5 m Abstand erteilt.
+Nächste Schritte: Widerspruch fristwahrend einlegen, Begründung nachreichen.

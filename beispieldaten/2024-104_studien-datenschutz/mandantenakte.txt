@@ -1,0 +1,31 @@
+[SYNTHETISCHE TESTDATEN – KEINE ECHTEN PERSONEN ODER UNTERNEHMEN]
+MANDANTENAKTE · Aktenzeichen 2024-104 · Rechtsgebiet: Pflanzenschutzrecht (Studien-/Datenschutz)
+
+Mandantin (Dateninhaberin):
+  Firma:     AgriChem Solutions GmbH
+  Anschrift: Industriepark Höchst, 65926 Frankfurt am Main
+  Ansprechpartner: Dr. Markus Brandt (Leiter Regulatory Affairs)
+  E-Mail:    m.brandt@agrichem-solutions.example · Tel. 069 1234567
+
+Gegenseite / Beteiligte:
+  - Wettbewerberin "NovaAgro S.A." (will auf Studien Bezug nehmen)
+  - BVL als Zulassungsbehörde
+
+Sachverhalt:
+  Schutz eigener (wirbeltierbezogener und sonstiger) Versuchsberichte gegen die
+  Bezugnahme durch einen Wettbewerber im Rahmen von dessen Zulassungsantrag.
+  Streit über Datenschutzfrist und Pflicht zum "Letter of Access" nach
+  Art. 59 und Art. 62/63 VO (EG) Nr. 1107/2009. Es geht um den
+  Berichtsschutz, die Vermeidung von Doppelversuchen an Wirbeltieren und eine
+  angemessene Ausgleichszahlung.
+
+Begehren: Durchsetzung des Studiendatenschutzes (Schutzfrist), Verpflichtung
+  des Wettbewerbers zu fairer Datenteilung gegen Entschädigung; Abwehr
+  unberechtigter Akteneinsicht in vertrauliche Studien (Art. 63 Vertraulichkeit).
+Streitwert / Mandatswert: 200.000,00 EUR
+Fristen:
+  - Stellungnahme zur Datenteilungsanfrage: 25.06.2026
+  - Wiedervorlage Ablauf Schutzfrist: 31.12.2027
+Aktennotiz 06.06.2026: Studienliste mit Erstvorlagedatum erstellt; Schutzfrist
+  läuft noch (10 Jahre ab Erstzulassung, Art. 59 Abs. 1).
+Nächste Schritte: Datenteilungsverhandlung führen, Vertraulichkeitsantrag stellen.
