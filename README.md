@@ -1,3 +1,11 @@
+> **Archiviert seit 29.10.2026, nicht mehr betreiben.** Dieses Repository ist ein eingestellter
+> Prototyp. Die Anmeldung vertraut dem Header `cf-access-authenticated-user-email`, ohne den
+> Cloudflare-Access-JWT zu pruefen; ausserhalb von Cloudflare Access kann jeder diesen Header setzen.
+> Code nicht deployen und nicht als Vorlage verwenden.
+>
+> **Archived since 29.10.2026, do not deploy.** A discontinued prototype whose login trusts the
+> `cf-access-authenticated-user-email` header without verifying the Access JWT.
+
 # Amicus AI
 
 Ein Wissenssystem für Kanzleien, das Akten lokal einliest, vor jedem
